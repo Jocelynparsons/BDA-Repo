@@ -75,6 +75,7 @@ def fetch_and_analyze(req: FetchRequest):
         "analyzed": analysis["analyzed"],
         "avg_sentiment": analysis["avg_sentiment"],
         "top_words": analysis["top_words"],
+        "computation_method": "MapReduce Algorithm", # <--- Added Badge Info
         "charts": {
             "top_words_chart": f"{base}/{analysis['top_words_chart']}" if analysis['top_words_chart'] else None,
             "posts_by_date_chart": f"{base}/{analysis['posts_by_date_chart']}" if analysis['posts_by_date_chart'] else None

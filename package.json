@@ -1,0 +1,21 @@
+{
+  "name": "reddit-bda",
+  "version": "1.0.0",
+  "description": "1. Copy backend/.env.example -> backend/.env and fill:\r    - REDDIT_CLIENT_ID\r    - REDDIT_CLIENT_SECRET\r    - REDDIT_USER_AGENT (your reddit user agent string)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}

@@ -24,6 +24,22 @@ export default function ResultModal({ open, onClose, result, preview }) {
     <div className="modal-backdrop">
       <div className="modal">
         <h3>Fetch & Analysis Complete</h3>
+
+        {/* --- NEW MAP REDUCE BADGE --- */}
+        <div style={{ 
+            background: "#e6fffa", 
+            border: "1px solid #38bec9", 
+            color: "#0c8599", 
+            padding: "8px 12px", 
+            borderRadius: "6px",
+            marginBottom: "15px",
+            fontWeight: "bold",
+            display: "inline-block"
+        }}>
+          ✅ Processing Engine: {result.computation_method || "Standard"}
+        </div>
+        {/* --- END BADGE --- */}
+
         <p>
           Fetched posts: <strong>{result.fetched}</strong>
         </p>
