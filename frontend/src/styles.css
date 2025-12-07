@@ -1,0 +1,11 @@
+body { font-family: Arial, sans-serif; padding: 20px; background:#f6f8fa; }
+.container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius:8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);}
+.form { display: grid; gap:8px; grid-template-columns: 1fr 1fr; }
+.form label { grid-column: span 2; font-weight:600; }
+.form input { padding:8px; border-radius:6px; border:1px solid #ccc; }
+.form button { grid-column: span 2; padding:10px; border-radius:6px; cursor:pointer; background:#0366d6; color:white; border:none; }
+.loading { margin-top:12px; padding:10px; background:#fffae6; border:1px solid #ffe58f; border-radius:6px; }
+.modal-backdrop { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; }
+.modal { background:white; padding:20px; width:90%; max-width:1000px; border-radius:8px; max-height:80vh; overflow:auto;}
+.preview table { width:100%; border-collapse: collapse; }
+.preview th, .preview td { border:1px solid #ddd; padding:6px; text-align:left; }
