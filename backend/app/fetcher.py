@@ -20,24 +20,36 @@ def reddit_instance():
     )
 
 def fetch_posts(subreddit: str, keyword: str, limit: int = 500) -> pd.DataFrame:
+    # --- FIX: TRIM SPACES ---
+    subreddit = subreddit.strip()
+    keyword = keyword.strip()
+    # ------------------------
+
     reddit = reddit_instance()
     subreddit_obj = reddit.subreddit(subreddit)
     posts = []
+    
     # Using .new() to fetch recent posts
-    for submission in subreddit_obj.new(limit=limit):
-        title = getattr(submission, "title", "") or ""
-        selftext = getattr(submission, "selftext", "") or ""
-        full_text = (title + " " + selftext).lower()
-        if keyword.lower() in full_text:
-            posts.append({
-                "title": title,
-                "selftext": selftext,
-                "score": getattr(submission, "score", 0),
-                "id": getattr(submission, "id", ""),
-                "url": getattr(submission, "url", ""),
-                "num_comments": getattr(submission, "num_comments", 0),
-                "created_utc": getattr(submission, "created_utc", None)
-            })
+    try:
+        for submission in subreddit_obj.new(limit=limit):
+            title = getattr(submission, "title", "") or ""
+            selftext = getattr(submission, "selftext", "") or ""
+            full_text = (title + " " + selftext).lower()
+            if keyword.lower() in full_text:
+                posts.append({
+                    "title": title,
+                    "selftext": selftext,
+                    "score": getattr(submission, "score", 0),
+                    "id": getattr(submission, "id", ""),
+                    "url": getattr(submission, "url", ""),
+                    "num_comments": getattr(submission, "num_comments", 0),
+                    "created_utc": getattr(submission, "created_utc", None)
+                })
+    except Exception as e:
+        print(f"Error fetching posts: {e}")
+        # Return empty list so we don't crash hard, but analyzer needs to handle it
+        pass
+
     df = pd.DataFrame(posts)
     # Save CSV
     csv_path = os.path.join(DATA_DIR, "reddit_data.csv")
